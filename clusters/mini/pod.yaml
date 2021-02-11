@@ -49,6 +49,7 @@ spec:
   - image: k8s.gcr.io/echoserver:1.4
     name: test
     resources: {}
+    port: 8080
   dnsPolicy: ClusterFirst
   restartPolicy: Always
 status: {}
