@@ -25,6 +25,7 @@ metadata:
   labels:
     run: test
 spec:
+  type: LoadBalancer
   selector:
     run: test
   ports:
