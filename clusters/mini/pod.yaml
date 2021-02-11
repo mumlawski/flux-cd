@@ -1,3 +1,36 @@
+----
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: test-app
+  namespace: test-app
+spec:
+  tls:
+  - hosts:
+    - test-app.com
+  rules:
+  - host: test-app.com
+    http:
+      paths:
+      - backend:
+          serviceName: test-app
+          servicePort: 8080
+        path: /
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: test-app
+  namespace: test-app
+  labels:
+    run: test
+spec:
+  selector:
+    run: test
+  ports:
+    - name: http
+      port: 8080
+      protocol: TCP
 ---
 apiVersion: v1
 kind: Namespace
