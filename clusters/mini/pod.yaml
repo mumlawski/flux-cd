@@ -54,3 +54,20 @@ spec:
   dnsPolicy: ClusterFirst
   restartPolicy: Always
 status: {}
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: test1
+  name: test1
+  namespace: test-app
+spec:
+  containers:
+  - image: k8s.gcr.io/echoserver:1.4
+    name: test1
+    resources: {}
+    port: 8080
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
