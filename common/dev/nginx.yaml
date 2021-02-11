@@ -17,7 +17,7 @@ spec:
       port: 80
       protocol: TCP
       targetPort: http
-      nodePort: 3000
+      nodePort: 30000
 ---
 apiVersion: v1
 kind: Namespace
