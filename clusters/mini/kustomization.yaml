@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - pod.yaml
   - jenkins.yaml
+  - nexus.yaml

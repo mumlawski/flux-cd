@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: jenkins
-        image: hub.docker.com/repository/docker/mumlawski/jenkins:latest
+        image: docker.io/mumlawski/jenkins:latest
         ports:
           - name: http-port
             containerPort: 8080
@@ -32,3 +32,33 @@ spec:
             mountPath: /var/jenkins_vol
       volumes:
         - name: jenkins-vol
+          hostPath:
+            path: /jenkins
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: jenkins
+  namespace: jenkins  
+spec:
+  selector:
+    app: jenkins
+  ports:
+  # Default port used by the image
+  - port: 8080
+    targetPort: 8080
+    protocol: TCP            
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: jenkins
+  namespace: jenkins
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: jenkins
+          servicePort: 8080
