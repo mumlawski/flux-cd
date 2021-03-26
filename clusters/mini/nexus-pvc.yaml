@@ -19,5 +19,10 @@ metadata:
   name: nexus-pvc
   namespace: devops-tools
 spec:
-  storageClassName: ""
+  resources:
+    requests:
+      storage: 300M
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
   volumeName: nexus-pv  

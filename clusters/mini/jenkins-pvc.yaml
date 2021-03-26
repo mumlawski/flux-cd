@@ -19,5 +19,10 @@ metadata:
   name: jenkins-pvc
   namespace: jenkins
 spec:
-  storageClassName: ""
+  resources:
+    requests:
+      storage: 300M
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
   volumeName: jenkins-pv  
