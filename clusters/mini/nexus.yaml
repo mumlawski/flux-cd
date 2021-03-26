@@ -78,3 +78,15 @@ spec:
         backend:
           serviceName: nexus-service
           servicePort: 8081
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: web-allow-all
+  namespace: devops-tools
+spec:
+  podSelector:
+    matchLabels:
+      app: nexus-server
+  ingress:
+  - {}              
