@@ -56,7 +56,8 @@ metadata:
   namespace: jenkins
 spec:
   rules:
-  - http:
+  - host: jenkins.domain.com
+    http:
       paths:
       - path: /
         backend:
