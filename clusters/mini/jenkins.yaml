@@ -19,13 +19,15 @@ spec:
       labels:
         app: jenkins
     spec:
+      securityContext:
+        fsGroup: 200    
       initContainers:
       - name: volume-mount
         image: busybox
-        command: ["sh", "-c", "chown -R 1000:1000 /jenkins-vol"]
+        command: ["sh", "-c", "chown -R 200:200 /var/jenkins_vol"]
         volumeMounts:
         - name: jenkins-vol
-          mountPath: /var/jenkins_vol      
+          mountPath: /var/jenkins_vol
       containers:
       - name: jenkins
         image: docker.io/mumlawski/jenkins:latest
