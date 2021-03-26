@@ -45,8 +45,8 @@ spec:
               mountPath: /nexus-data
       volumes:
         - name: nexus-data
-          hostPath:
-            path: /nexus
+          persistentVolumeClaim:
+            claimName: nexus-pvc
 ---            
 apiVersion: v1
 kind: Service

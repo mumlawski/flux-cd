@@ -32,8 +32,8 @@ spec:
             mountPath: /var/jenkins_vol
       volumes:
         - name: jenkins-vol
-          hostPath:
-            path: /jenkins
+          persistentVolumeClaim:
+            claimName: jenkins-pvc
 ---
 kind: Service
 apiVersion: v1
