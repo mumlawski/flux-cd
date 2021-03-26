@@ -23,5 +23,5 @@ spec:
       storage: 300M
   storageClassName: manual
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   volumeName: nexus-pv  
