@@ -20,11 +20,11 @@ spec:
         app: jenkins
     spec:
       securityContext:
-        fsGroup: 200    
+        fsGroup: 1000    
       initContainers:
       - name: volume-mount
         image: busybox
-        command: ["sh", "-c", "chown -R 200:200 /var/jenkins_vol"]
+        command: ["sh", "-c", "chown -R 1000:1000 /var/jenkins_vol"]
         volumeMounts:
         - name: jenkins-vol
           mountPath: /var/jenkins_vol
