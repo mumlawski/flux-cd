@@ -9,8 +9,16 @@ spec:
     storage: 300M
   accessModes:
     - ReadWriteOnce
-  hostPath:
-    path: "/jenkins"
+  local:
+    path: "/nexus"
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - kind-worker
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
