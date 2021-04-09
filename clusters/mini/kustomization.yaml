@@ -6,3 +6,4 @@ resources:
   - jenkins-pvc.yaml
   - nexus.yaml
   - nexus-pvc.yaml   
+  - docker-pvc.yaml

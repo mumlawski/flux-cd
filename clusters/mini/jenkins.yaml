@@ -20,11 +20,11 @@ spec:
         app: jenkins
     spec:
       securityContext:
-        fsGroupChangePolicy: "Always"
+        runAsUser: 0
       initContainers:
       - name: volume-mount
         image: busybox
-        command: ["sh", "-c", "chown -R 1000:1000 /var/jenkins_home"]
+        command: ["sh", "-c", "chown -R 1000:1000 /var/jenkins_home", "chown -R 1000:1000"]
         volumeMounts:
         - name: jenkins-vol
           mountPath: /var/jenkins_home
@@ -39,10 +39,15 @@ spec:
         volumeMounts:
           - name: jenkins-vol
             mountPath: /var/jenkins_home
+          - mountPath: /usr/bin/docker
+            name: docker-socket            
       volumes:
         - name: jenkins-vol
           persistentVolumeClaim:
             claimName: jenkins-pvc
+        - name: docker-socket
+          persistentVolumeClaim:
+            claimName: docker-pvc          
 ---
 kind: Service
 apiVersion: v1
