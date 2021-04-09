@@ -39,7 +39,7 @@ spec:
         volumeMounts:
           - name: jenkins-vol
             mountPath: /var/jenkins_home
-          - mountPath: /var/run/docker.sock
+          - mountPath: /var/run/
             name: docker-socket   
         securityContext:
           privileged: true             
@@ -47,10 +47,9 @@ spec:
         - name: jenkins-vol
           persistentVolumeClaim:
             claimName: jenkins-pvc
-        - name: docker-socket
-          hostPath:
-            path: /var/run/docker.sock
-            type: File       
+        - name: docker-vol
+          persistentVolumeClaim:
+            claimName: docker-pvc
 ---
 kind: Service
 apiVersion: v1
