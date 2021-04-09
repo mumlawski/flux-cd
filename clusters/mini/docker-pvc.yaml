@@ -10,7 +10,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   local:
-    path: "//var/run/"
+    path: "//var/run/docker.sock"
   nodeAffinity:
     required:
       nodeSelectorTerms:
