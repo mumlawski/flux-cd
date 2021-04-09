@@ -24,7 +24,7 @@ spec:
       initContainers:
       - name: volume-mount
         image: busybox
-        command: ["sh", "-c", "chown -R 1000:1000 /var/jenkins_home", "chown -R 1000:1000"]
+        command: ["sh", "-c", "chown -R 1000:1000 /var/jenkins_home"]
         volumeMounts:
         - name: jenkins-vol
           mountPath: /var/jenkins_home
@@ -39,7 +39,7 @@ spec:
         volumeMounts:
           - name: jenkins-vol
             mountPath: /var/jenkins_home
-          - mountPath: /usr/bin/docker
+          - mountPath: /var/run/docker.sock
             name: docker-socket            
       volumes:
         - name: jenkins-vol
