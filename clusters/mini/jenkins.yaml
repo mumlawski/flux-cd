@@ -46,8 +46,9 @@ spec:
           persistentVolumeClaim:
             claimName: jenkins-pvc
         - name: docker-socket
-          persistentVolumeClaim:
-            claimName: docker-pvc          
+          hostPath:
+            path: "//var/run/docker.sock"
+            type: file       
 ---
 kind: Service
 apiVersion: v1
