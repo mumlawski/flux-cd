@@ -47,7 +47,7 @@ spec:
         - name: jenkins-vol
           persistentVolumeClaim:
             claimName: jenkins-pvc
-        - name: docker-vol
+        - name: docker-socket
           persistentVolumeClaim:
             claimName: docker-pvc
 ---
