@@ -20,7 +20,7 @@ spec:
         app: jenkins
     spec:
       securityContext:
-        privileged: true
+        runAsUser: 0
       initContainers:
       - name: volume-mount
         image: busybox
@@ -40,7 +40,9 @@ spec:
           - name: jenkins-vol
             mountPath: /var/jenkins_home
           - mountPath: /var/run/docker.sock
-            name: docker-socket            
+            name: docker-socket   
+        securityContext:
+          privileged: true             
       volumes:
         - name: jenkins-vol
           persistentVolumeClaim:
