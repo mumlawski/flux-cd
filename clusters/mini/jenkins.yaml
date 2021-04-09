@@ -47,7 +47,7 @@ spec:
             claimName: jenkins-pvc
         - name: docker-socket
           hostPath:
-            path: "//var/run/docker.sock"
+            path: "/var/run/docker.sock"
             type: File       
 ---
 kind: Service
