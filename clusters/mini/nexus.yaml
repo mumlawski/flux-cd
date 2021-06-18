@@ -64,8 +64,12 @@ spec:
   selector: 
     app: nexus-server
   ports:
-    - port: 8081
+    - name: gui
+      port: 8081
       targetPort: 8081
+    - name: registry
+      port: 8085
+      targetPort: 8085      
 ---
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
@@ -77,6 +81,10 @@ spec:
   - host: nexus.domain.com
     http:
       paths:
+      - path: /repository/my-docker-private-registry/
+        backend:
+          serviceName: nexus-service
+          servicePort: 8085      
       - path: /
         backend:
           serviceName: nexus-service
