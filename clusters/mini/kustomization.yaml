@@ -2,8 +2,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - jenkins.yaml
-  - jenkins-pvc.yaml
+#  - jenkins.yaml
+#  - jenkins-pvc.yaml
   - nexus.yaml
   - nexus-pvc.yaml   
-  - docker-pvc.yaml
+#  - docker-pvc.yaml
