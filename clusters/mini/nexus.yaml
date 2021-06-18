@@ -39,7 +39,10 @@ spec:
               memory: "2Gi"
               cpu: "500m"
           ports:
-            - containerPort: 8081
+            - name: web-ui
+              containerPort: 8081
+            - name: docker-repo
+              containerPort: 8085
           volumeMounts:
             - name: nexus-data
               mountPath: /nexus-data
